@@ -2,12 +2,12 @@
 title: "Homework 4"
 author: "PSTAT 131/231"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     toc_float: yes
     code_folding: show
+  pdf_document:
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -39,7 +39,6 @@ Make sure you load the `tidyverse` and `tidymodels`!
 
 ```{r}
 titanic <- read.csv('data/titanic.csv')
-titanic%>%nrow()
 
 # preprocessing
 titanic$survived <- factor(titanic$survived, levels = c("Yes","No"))
@@ -84,7 +83,7 @@ dim(titanic_test)
 Fold the **training** data. Use *k*-fold cross-validation, with $k = 10$.
 
 ```{r}
-titanic_fold <- vfold_cv(titanic)
+titanic_fold <- vfold_cv(titanic_train)
 ```
 
 ### Question 3

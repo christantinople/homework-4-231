@@ -1629,9 +1629,8 @@ level.</p>
 <p>Make sure you load the <code>tidyverse</code> and
 <code>tidymodels</code>!</p>
 <pre class="r"><code>titanic &lt;- read.csv(&#39;data/titanic.csv&#39;)
-titanic%&gt;%nrow()</code></pre>
-<pre><code>## [1] 891</code></pre>
-<pre class="r"><code># preprocessing
+
+# preprocessing
 titanic$survived &lt;- factor(titanic$survived, levels = c(&quot;Yes&quot;,&quot;No&quot;))
 titanic$pclass &lt;- as.factor(titanic$pclass)</code></pre>
 <p><em>Remember that you’ll need to set a seed at the beginning of the
@@ -1670,7 +1669,7 @@ titanic_recipe &lt;- recipe(survived ~ ., data = recipe_data)%&gt;%
 <h3>Question 2</h3>
 <p>Fold the <strong>training</strong> data. Use <em>k</em>-fold
 cross-validation, with <span class="math inline">\(k = 10\)</span>.</p>
-<pre class="r"><code>titanic_fold &lt;- vfold_cv(titanic)</code></pre>
+<pre class="r"><code>titanic_fold &lt;- vfold_cv(titanic_train)</code></pre>
 </div>
 <div id="question-3" class="section level3">
 <h3>Question 3</h3>
@@ -1754,20 +1753,20 @@ standard error.)</em></p>
 <pre><code>## # A tibble: 2 × 6
 ##   .metric  .estimator  mean     n std_err .config             
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-## 1 accuracy binary     0.808    10  0.0172 Preprocessor1_Model1
-## 2 roc_auc  binary     0.849    10  0.0147 Preprocessor1_Model1</code></pre>
+## 1 accuracy binary     0.809    10  0.0180 Preprocessor1_Model1
+## 2 roc_auc  binary     0.856    10  0.0217 Preprocessor1_Model1</code></pre>
 <pre class="r"><code>collect_metrics(lda_fit_rs)</code></pre>
 <pre><code>## # A tibble: 2 × 6
 ##   .metric  .estimator  mean     n std_err .config             
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-## 1 accuracy binary     0.797    10  0.0165 Preprocessor1_Model1
-## 2 roc_auc  binary     0.850    10  0.0150 Preprocessor1_Model1</code></pre>
+## 1 accuracy binary     0.792    10  0.0170 Preprocessor1_Model1
+## 2 roc_auc  binary     0.856    10  0.0213 Preprocessor1_Model1</code></pre>
 <pre class="r"><code>collect_metrics(qda_fit_rs)</code></pre>
 <pre><code>## # A tibble: 2 × 6
 ##   .metric  .estimator  mean     n std_err .config             
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-## 1 accuracy binary     0.788    10  0.0143 Preprocessor1_Model1
-## 2 roc_auc  binary     0.852    10  0.0113 Preprocessor1_Model1</code></pre>
+## 1 accuracy binary     0.770    10  0.0238 Preprocessor1_Model1
+## 2 roc_auc  binary     0.845    10  0.0248 Preprocessor1_Model1</code></pre>
 <p>We see that logistic regression yields the best result. Though LDA
 has almost identical performance.</p>
 </div>
@@ -1841,8 +1840,8 @@ by taking the second fold as a training set?</p>
 \]</span> Therefore,</p>
 <p><span class="math display">\[\begin{align*}
 \text{Cov}(\hat{\beta}^{(1)}, \hat{\beta}^{(2)}) &amp;=
-\frac{1}{(n-1)^2}\text{Cov}\left(\sum_{i=2}^n y_i, \sum_{i=1\\i\neq 2}^n
-y_i\right)\\
+\frac{1}{(n-1)^2} \text{Cov}
+\left(\sum_{i=2}^n y_i, \sum_{i=1,i\neq 2}^n y_i\right)\\
 &amp;=\frac{1}{(n-1)^2}\sum_{i=3}^n\text{Cov}(y_i,y_i) \\
 &amp;=\frac{(n-2)\sigma^2}{(n-1)^2}
 \end{align*}\]</span></p>
