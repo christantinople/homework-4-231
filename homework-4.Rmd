@@ -2,12 +2,12 @@
 title: "Homework 4"
 author: "PSTAT 131/231"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
     toc_float: yes
     code_folding: show
-  pdf_document:
-    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -83,6 +83,7 @@ dim(titanic_test)
 Fold the **training** data. Use *k*-fold cross-validation, with $k = 10$.
 
 ```{r}
+# the default is v=10 folds
 titanic_fold <- vfold_cv(titanic_train)
 ```
 

@@ -1669,7 +1669,8 @@ titanic_recipe &lt;- recipe(survived ~ ., data = recipe_data)%&gt;%
 <h3>Question 2</h3>
 <p>Fold the <strong>training</strong> data. Use <em>k</em>-fold
 cross-validation, with <span class="math inline">\(k = 10\)</span>.</p>
-<pre class="r"><code>titanic_fold &lt;- vfold_cv(titanic_train)</code></pre>
+<pre class="r"><code># the default is v=10 folds
+titanic_fold &lt;- vfold_cv(titanic_train)</code></pre>
 </div>
 <div id="question-3" class="section level3">
 <h3>Question 3</h3>
