@@ -91,9 +91,9 @@ titanic_fold <- vfold_cv(titanic_train)
 
 In your own words, explain what we are doing in Question 2. What is *k*-fold cross-validation? Why should we use it, rather than simply fitting and testing models on the entire training set? If we **did** use the entire training set, what resampling method would that be?
 
-***Answer:*** We are splitting the data into *k* roughly equal size clusters (folds). Then for each *i* in 1, 2, ..., *k*, we train the model on all folds except the *i*-th fold. Then we take the *i*-th fold to evaluate the accuracy of the model and record this statistic. Then we average across all iterations and take this average as our performance metric. The benefit is that this metric takes into account the models performance across the entire data set.
-If we were to just train on the entire training set, this would be 2-fold cross validation.
+***Answer:*** We are splitting the data into *k* roughly equal size clusters (folds). Then for each *i* in 1, 2, ..., *k*, we train the model on all folds except the *i*-th fold. Then we take the *i*-th fold to evaluate the accuracy of the model and record this statistic. Then we average across all iterations and take this average as our performance metric. The benefit is that this metric takes into account the models performance across the entire data set. Taking an average across all possible folds creates a more robust and consistent estimator of the true error.
 
+If we were to just train on the entire training set, this would be the validation set approach.
 
 ### Question 4
 

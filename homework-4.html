@@ -1686,8 +1686,10 @@ in 1, 2, …, <em>k</em>, we train the model on all folds except the
 accuracy of the model and record this statistic. Then we average across
 all iterations and take this average as our performance metric. The
 benefit is that this metric takes into account the models performance
-across the entire data set. If we were to just train on the entire
-training set, this would be 2-fold cross validation.</p>
+across the entire data set. Taking an average across all possible folds
+creates a more robust and consistent estimator of the true error.</p>
+<p>If we were to just train on the entire training set, this would be
+the validation set approach.</p>
 </div>
 <div id="question-4" class="section level3">
 <h3>Question 4</h3>
